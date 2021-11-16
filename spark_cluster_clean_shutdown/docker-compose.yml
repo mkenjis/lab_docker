@@ -1,0 +1,43 @@
+version: "3.1"
+
+services:
+  spk_mst:
+    image: mkenjis/ubspkcluster1_img
+    environment:
+      - SPARK_HOST_SLAVES=spk_wkr1,spk_wkr2,spk_wkr3
+      - HADOOP_HOSTNAME=hadoop    
+    networks:
+      - mynet
+    depends_on:
+      - spk_wkr1,spk_wkr2,spk_wkr3
+  spk_wkr1:
+    image: mkenjis/ubspkcluster1_img
+    environment:
+      - HADOOP_HOSTNAME=hadoop
+    networks:
+      - mynet
+    depends_on:
+      - hadoop
+  spk_wkr2:
+    image: mkenjis/ubspkcluster1_img
+    environment:
+      - HADOOP_HOSTNAME=hadoop
+    networks:
+      - mynet
+    depends_on:
+      - hadoop
+  spk_wkr3:
+    image: mkenjis/ubspkcluster1_img
+    environment:
+      - HADOOP_HOSTNAME=hadoop
+    networks:
+      - mynet
+    depends_on:
+      - hadoop
+  hadoop:
+    image: mkenjis/ubhdp_img
+    networks:
+      - mynet
+
+networks:
+  mynet:
