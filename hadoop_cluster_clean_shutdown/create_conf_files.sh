@@ -43,6 +43,15 @@ echo '    <value>'${HOSTNAME}':9001</value>' >>$HADOOP_HOME/etc/hadoop/mapred-si
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/mapred-site.xml
 echo '</configuration>' >>$HADOOP_HOME/etc/hadoop/mapred-site.xml
 
+# yarn-site.xml (HADOOP)
+# =============
+echo '<configuration>' >$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <name>yarn.nodemanager.aux-services</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>mapreduce_shuffle</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '</configuration>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+
 # hadoop-env.sh (HADOOP)
 # =============
 echo 'export JAVA_HOME=/usr/local/jre1.8.0_181' >$HADOOP_HOME/etc/hadoop/hadoop-env.sh
