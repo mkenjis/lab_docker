@@ -45,17 +45,17 @@ echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '    <name>yarn.resourcemanager.resource-tracker.address</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
-echo '    <value>master:8025</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>'${HOSTNAME}':8025</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '    <name>yarn.resourcemanager.scheduler.address</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
-echo '    <value>master:8030</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>'${HOSTNAME}':8030</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '    <name>yarn.resourcemanager.address</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
-echo '    <value>master:8040</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>'${HOSTNAME}':8040</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '</configuration>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
