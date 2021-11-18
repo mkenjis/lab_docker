@@ -3,7 +3,7 @@
 echo '<configuration>' >$HADOOP_HOME/etc/hadoop/core-site.xml
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/core-site.xml
 echo '    <name>fs.default.name</name>' >>$HADOOP_HOME/etc/hadoop/core-site.xml
-echo '    <value>hdfs://'${HOSTNAME}':9000</value>' >>$HADOOP_HOME/etc/hadoop/core-site.xml
+echo '    <value>hdfs://'${HADOOP_HOST_MASTER}':9000</value>' >>$HADOOP_HOME/etc/hadoop/core-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/core-site.xml
 echo '  <property>' >>$SPARK_HOME/conf/core-site.xml
 echo '    <name>hadoop.tmp.dir</name>' >>$SPARK_HOME/conf/core-site.xml
@@ -45,17 +45,17 @@ echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '    <name>yarn.resourcemanager.resource-tracker.address</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
-echo '    <value>'${HOSTNAME}':8025</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>'${HADOOP_HOST_MASTER}':8025</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '    <name>yarn.resourcemanager.scheduler.address</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
-echo '    <value>'${HOSTNAME}':8030</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>'${HADOOP_HOST_MASTER}':8030</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '  <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '    <name>yarn.resourcemanager.address</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
-echo '    <value>'${HOSTNAME}':8040</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    <value>'${HADOOP_HOST_MASTER}':8040</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 echo '    <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml

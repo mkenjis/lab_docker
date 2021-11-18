@@ -22,12 +22,11 @@ ssh-keyscan localhost >>~/.ssh/known_hosts
 ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 
 if [ -n "${HADOOP_HOST_SLAVES}" ]; then
+   > $HADOOP_HOME/etc/hadoop/slaves
    for HADOOP_HOST in `echo ${HADOOP_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${HADOOP_HOST} >~/.ssh/known_hosts
       echo ${HADOOP_HOST} >>$HADOOP_HOME/etc/hadoop/slaves
    done
-
-   echo ${HOSTNAME} >$HADOOP_HOME/etc/hadoop/masters
 
    $HADOOP_HOME/bin/hdfs namenode -format
 
