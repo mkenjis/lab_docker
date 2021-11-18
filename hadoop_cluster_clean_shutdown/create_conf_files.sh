@@ -29,7 +29,7 @@ echo '    <value>yarn</value>' >>$HADOOP_HOME/etc/hadoop/mapred-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/mapred-site.xml
 echo '</configuration>' >>$HADOOP_HOME/etc/hadoop/mapred-site.xml
 
-# yarn-site.yml (HADOOP)
+# yarn-site.xml (HADOOP)
 # =============
 echo '<configuration>' >$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
@@ -58,12 +58,18 @@ echo '    <name>yarn.resourcemanager.address</name>' >>$HADOOP_HOME/etc/hadoop/y
 echo '    <value>'${HOSTNAME}':8040</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 echo '  </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
+echo '    <property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '      <name>yarn.scheduler.maximum-allocation-mb</name>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '      <value>2048</value>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+echo '    </property>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
+
 echo '</configuration>' >>$HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 
 # hadoop-env.sh (HADOOP)
 # =============
-echo 'export JAVA_HOME=/usr/local/jre1.8.0_181' >$HADOOP_HOME/etc/hadoop/hadoop-env.sh
+echo '' >>$HADOOP_HOME/etc/hadoop/hadoop-env.sh
+echo 'export JAVA_HOME=/usr/local/jre1.8.0_181' >>$HADOOP_HOME/etc/hadoop/hadoop-env.sh
 echo 'export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true' >>$HADOOP_HOME/etc/hadoop/hadoop-env.sh
 echo 'export HADOOP_CONF_DIR='${HADOOP_HOME}'/etc/hadoop' >>$HADOOP_HOME/etc/hadoop/hadoop-env.sh
 chmod +x $HADOOP_HOME/etc/hadoop/hadoop-env.sh
