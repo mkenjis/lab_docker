@@ -24,7 +24,8 @@ if [ -n "${HADOOP_HOST_SLAVES}" ]; then
 
    create_conf_files.sh
    
-   > $HADOOP_HOME/etc/hadoop/slaves
+   ssh root@${HOSTNAME} "cat /etc/hostname" >${HADOOP_CONF_DIR}/slaves
+   
    for HADOOP_HOST in `echo ${HADOOP_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${HADOOP_HOST} >~/.ssh/known_hosts
 	  scp ${HADOOP_CONF_DIR}/core-site.xml root@${HADOOP_HOST}:${HADOOP_CONF_DIR}/core-site.xml
