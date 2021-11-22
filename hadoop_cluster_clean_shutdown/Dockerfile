@@ -3,7 +3,7 @@ FROM ubuntu
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Central
 
-RUN apt-get update && apt-get install -y supervisor openssh-server openssh-client vim iputils-ping
+RUN apt-get update && apt-get install -y supervisor openssh-server openssh-client vim iputils-ping python
 
 WORKDIR /usr/local
 
