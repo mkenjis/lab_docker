@@ -33,7 +33,7 @@ if [ -n "${HADOOP_HOST_SLAVES}" ]; then
 	  scp ${HADOOP_CONF_DIR}/yarn-site.xml root@${HADOOP_HOST}:${HADOOP_CONF_DIR}/yarn-site.xml
 	  scp ${HADOOP_CONF_DIR}/hadoop-env.sh root@${HADOOP_HOST}:${HADOOP_CONF_DIR}/hadoop-env.sh
 	  
-      ssh root@${HADOOP_HOST} "cat /etc/hostname" >>$HADOOP_HOME/etc/hadoop/slaves
+      ssh root@${HADOOP_HOST} "cat /etc/hostname" >>${HADOOP_CONF_DIR}/slaves
    done
    
    for HADOOP_HOST in `echo ${HADOOP_HOST_SLAVES} | tr ',' ' '`; do
