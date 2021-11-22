@@ -15,8 +15,6 @@ services:
       - HADOOP_HOST_SLAVES=hdp1,hdp2,hdp3
     networks:
       - mynet
-    ports:
-      - 9000, 8025, 8030, 8040
     depends_on:
       - hdp1,hdp2,hdp3
   hdp1:
@@ -25,7 +23,6 @@ services:
       - mynet
   hdp2:
     image: mkenjis/ubhdpclu_img
-
     networks:
       - mynet
   hdp3:
