@@ -35,6 +35,10 @@ if [ -n "${HADOOP_HOST_SLAVES}" ]; then
 	  
       ssh root@${HADOOP_HOST} "cat /etc/hostname" >>$HADOOP_HOME/etc/hadoop/slaves
    done
+   
+   for HADOOP_HOST in `echo ${HADOOP_HOST_SLAVES} | tr ',' ' '`; do
+ 	  scp ${HADOOP_CONF_DIR}/slaves root@${HADOOP_HOST}:${HADOOP_CONF_DIR}/slaves
+   done   
 
    $HADOOP_HOME/bin/hdfs namenode -format
 

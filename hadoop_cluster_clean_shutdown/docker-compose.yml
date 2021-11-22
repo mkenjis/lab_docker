@@ -13,7 +13,6 @@ services:
     image: mkenjis/ubhdpclu_img
     environment:
       - HADOOP_HOST_SLAVES=hdp1,hdp2,hdp3
-      - HADOOP_HOST_MASTER=hdpmst   
     networks:
       - mynet
     ports:
@@ -22,20 +21,15 @@ services:
       - hdp1,hdp2,hdp3
   hdp1:
     image: mkenjis/ubhdpclu_img
-    environment:
-      - HADOOP_HOST_MASTER=hdpmst
     networks:
       - mynet
   hdp2:
     image: mkenjis/ubhdpclu_img
-    environment:
-      - HADOOP_HOST_MASTER=hdpmst
+
     networks:
       - mynet
   hdp3:
     image: mkenjis/ubhdpclu_img
-    environment:
-      - HADOOP_HOST_MASTER=hdpmst
     networks:
       - mynet
 
