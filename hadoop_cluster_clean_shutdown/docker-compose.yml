@@ -11,8 +11,6 @@ services:
       - hdpmst
   hdpmst:
     image: mkenjis/ubhdpclu_img
-    environment:
-      - HADOOP_HOST_SLAVES=hdp1,hdp2,hdp3
     networks:
       - mynet
     depends_on:

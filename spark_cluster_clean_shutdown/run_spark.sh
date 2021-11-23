@@ -1,5 +1,7 @@
 trap "{ echo Stopping play app >/tmp/msg.txt; /usr/bin/bash -c \"/root/stop_spark.sh\"; exit 0; }" SIGTERM
 
+sleep 20
+
 export JAVA_HOME=/usr/local/jre1.8.0_181
 export CLASSPATH=$JAVA_HOME/lib
 export PATH=$PATH:.:$JAVA_HOME/bin
