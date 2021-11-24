@@ -1,0 +1,35 @@
+version: "3.1"
+
+services:
+  spk_mst:
+    image: mkenjis/ubspkcluster1_s3_img
+    environment:
+      - HADOOP_HOSTNAME=hdpmst
+    networks:
+      - mynet
+    depends_on:
+      - hdpmst
+  hdpmst:
+    image: mkenjis/ubhdpclu_img
+    # setup HADOOP_HOST_SLAVES=hdp1,hdp2,hd3
+    # and SPARK_HOSTNAME=spk_mst 
+    # before running run_hadoop.sh inside container
+    networks:
+      - mynet
+    depends_on:
+      - hdp1,hdp2,hdp3
+  hdp1:
+    image: mkenjis/ubhdpclu_img
+    networks:
+      - mynet
+  hdp2:
+    image: mkenjis/ubhdpclu_img
+    networks:
+      - mynet
+  hdp3:
+    image: mkenjis/ubhdpclu_img
+    networks:
+      - mynet
+
+networks:
+  mynet:
