@@ -13,7 +13,7 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-#export SPARK_HOME=/usr/local/spark-2.3.2-bin-hadoop2.7
+export SPARK_HOME=/usr/local/spark-2.3.2-bin-hadoop2.7
 
 service ssh start
 
@@ -27,13 +27,14 @@ if [ -n "${HADOOP_HOST_SLAVES}" ]; then
    create_conf_files.sh
    
    # setup Spark client
-   #ssh-keyscan ${SPARK_HOSTNAME} >~/.ssh/known_hosts
-   #scp ${HADOOP_CONF_DIR}/core-site.xml root@${SPARK_HOSTNAME}:${SPARK_HOME}/conf/core-site.xml
-   #scp ${HADOOP_CONF_DIR}/hdfs-site.xml root@${SPARK_HOSTNAME}:${SPARK_HOME}/conf/hdfs-site.xml
-   #scp ${HADOOP_CONF_DIR}/yarn-site.xml root@${SPARK_HOSTNAME}:${SPARK_HOME}/conf/yarn-site.xml
+   # NOTE : append the Hadoop´s root authorized_keys to Spark´s root authorized_keys file
+   ssh-keyscan ${SPARK_HOSTNAME} >~/.ssh/known_hosts
+   scp ${HADOOP_CONF_DIR}/core-site.xml root@${SPARK_HOSTNAME}:${SPARK_HOME}/conf/core-site.xml
+   scp ${HADOOP_CONF_DIR}/hdfs-site.xml root@${SPARK_HOSTNAME}:${SPARK_HOME}/conf/hdfs-site.xml
+   scp ${HADOOP_CONF_DIR}/yarn-site.xml root@${SPARK_HOSTNAME}:${SPARK_HOME}/conf/yarn-site.xml
    
    # setup Hadoop HDFS and YARN cluster
-   ssh root@${HOSTNAME} "cat /etc/hostname" >${HADOOP_CONF_DIR}/slaves
+   >${HADOOP_CONF_DIR}/slaves
    
    for HADOOP_HOST in `echo ${HADOOP_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${HADOOP_HOST} >~/.ssh/known_hosts
