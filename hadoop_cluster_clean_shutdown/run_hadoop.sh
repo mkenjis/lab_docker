@@ -22,9 +22,11 @@ ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 
 if [ -n "${HADOOP_HOST_SLAVES}" ]; then
 
+   sleep 10
+
    create_conf_files.sh
    
-   ssh root@${HOSTNAME} "cat /etc/hostname" >${HADOOP_CONF_DIR}/slaves
+   >${HADOOP_CONF_DIR}/slaves
    
    for HADOOP_HOST in `echo ${HADOOP_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${HADOOP_HOST} >~/.ssh/known_hosts
