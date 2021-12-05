@@ -22,7 +22,7 @@ ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 
 if [ -n "${HADOOP_HOST_SLAVES}" ]; then
 
-   sleep 20
+   sleep 30
    
    create_conf_files.sh
 
