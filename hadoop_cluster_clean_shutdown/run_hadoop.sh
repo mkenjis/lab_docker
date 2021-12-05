@@ -22,7 +22,7 @@ ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 
 if [ -n "${HADOOP_HOST_SLAVES}" ]; then
 
-   sleep 10
+   sleep 20
 
    create_conf_files.sh
    
@@ -43,8 +43,10 @@ if [ -n "${HADOOP_HOST_SLAVES}" ]; then
  	  scp ${HADOOP_CONF_DIR}/slaves root@${HADOOP_HOST}:${HADOOP_CONF_DIR}/slaves
    done   
 
+   # build HDFS 
    $HADOOP_HOME/bin/hdfs namenode -format
 
+   # start HDFS and YARN services
    $HADOOP_HOME/sbin/start-dfs.sh
    $HADOOP_HOME/sbin/start-yarn.sh
 fi

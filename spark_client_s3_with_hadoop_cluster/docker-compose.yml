@@ -10,24 +10,21 @@ services:
     depends_on:
       - hdpmst
   hdpmst:
-    image: mkenjis/ubhdpclu_img
-    # setup HADOOP_HOST_SLAVES=hdp1,hdp2,hd3
-    # and SPARK_HOSTNAME=spk_mst
-    # before running run_hadoop.sh inside container
+    image: mkenjis/ubyarnclu_img
     networks:
       - mynet
     depends_on:
       - hdp1,hdp2,hdp3
   hdp1:
-    image: mkenjis/ubhdpclu_img
+    image: mkenjis/ubyarnclu_img
     networks:
       - mynet
   hdp2:
-    image: mkenjis/ubhdpclu_img
+    image: mkenjis/ubyarnclu_img
     networks:
       - mynet
   hdp3:
-    image: mkenjis/ubhdpclu_img
+    image: mkenjis/ubyarnclu_img
     networks:
       - mynet
 
