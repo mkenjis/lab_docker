@@ -1,7 +1,5 @@
 trap "{ echo Stopping play app >/tmp/msg.txt; /usr/bin/bash -c \"/root/stop_spark.sh\"; exit 0; }" SIGTERM
 
-sleep 20
-
 export JAVA_HOME=/usr/local/jre1.8.0_181
 export CLASSPATH=$JAVA_HOME/lib
 export PATH=$PATH:.:$JAVA_HOME/bin
@@ -19,6 +17,8 @@ ssh-keyscan localhost >>~/.ssh/known_hosts
 ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 
 if [ -n "${SPARK_HOST_SLAVES}" ]; then
+
+   sleep 30
    for SPARK_HOST in `echo ${SPARK_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${SPARK_HOST} >~/.ssh/known_hosts
 	  echo ${SPARK_HOST} >>$SPARK_HOME/conf/slaves
