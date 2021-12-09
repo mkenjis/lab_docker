@@ -28,6 +28,9 @@ RUN echo "" >>.bashrc \
  && echo 'export PATH=$PATH:$ZEPPL_HOME/bin' >>.bashrc \
  && echo 'export USE_HADOOP=false' >>.bashrc
 
+RUN /usr/bin/bash -c "ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null" \
+ && cp .ssh/id_rsa.pub .ssh/authorized_keys
+ 
 COPY run_zeppl.sh .
 RUN chmod +x run_zeppl.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf

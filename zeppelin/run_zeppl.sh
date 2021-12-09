@@ -5,4 +5,6 @@ export PATH=$PATH:.:$JAVA_HOME/bin
 export ZEPPL_HOME=/usr/local/zeppelin-0.9.0-bin-netinst
 export PATH=$PATH:$ZEPPL_HOME/bin
 
-$ZEPPL_HOME/bin/zeppelin-daemon start
+service ssh start
+
+$ZEPPL_HOME/bin/zeppelin-daemon.sh start

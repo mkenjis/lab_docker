@@ -5,6 +5,8 @@ services:
     image: mkenjis/ubzepp_img
     environment:
       - HADOOP_HOSTNAME=hdpmst
+    ports:
+      - 8080:8080
     networks:
       - mynet
     depends_on:
