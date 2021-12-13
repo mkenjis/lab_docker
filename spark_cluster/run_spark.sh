@@ -7,7 +7,7 @@ export PATH=$PATH:.:$JAVA_HOME/bin
 export SPARK_HOME=/usr/local/spark-2.3.2-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
-create_conf_files.sh
+# create_conf_files.sh
 
 service ssh start
 
@@ -17,6 +17,9 @@ ssh-keyscan localhost >>~/.ssh/known_hosts
 ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 
 if [ -n "${SPARK_HOST_SLAVES}" ]; then
+
+   sleep 30
+   
    for SPARK_HOST in `echo ${SPARK_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${SPARK_HOST} >~/.ssh/known_hosts
 	  echo ${SPARK_HOST} >>$SPARK_HOME/conf/slaves
@@ -25,5 +28,6 @@ if [ -n "${SPARK_HOST_SLAVES}" ]; then
    $SPARK_HOME/sbin/start-slaves.sh
 fi
 
-
-
+while [ 1 -eq 1 ]; do
+   sleep 10
+done

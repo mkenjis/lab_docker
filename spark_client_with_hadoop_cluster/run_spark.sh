@@ -19,6 +19,7 @@ ssh-keyscan 0.0.0.0 >>~/.ssh/known_hosts
 if [ -n "${SPARK_HOST_SLAVES}" ]; then
 
    sleep 30
+   
    for SPARK_HOST in `echo ${SPARK_HOST_SLAVES} | tr ',' ' '`; do
       ssh-keyscan ${SPARK_HOST} >~/.ssh/known_hosts
 	  echo ${SPARK_HOST} >>$SPARK_HOME/conf/slaves
