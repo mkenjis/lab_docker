@@ -1,0 +1,24 @@
+version: "3.1"
+
+services:
+  zookeeper1:
+    image: mkenjis/ubkfk_img
+    environment:
+      - BROKER_ID=1
+    networks:
+      - mynet
+  zookeeper2:
+    image: mkenjis/ubkfk_img
+    environment:
+      - BROKER_ID=2
+    networks:
+      - mynet
+  zookeeper3:
+    image: mkenjis/ubkfk_img
+    environment:
+      - BROKER_ID=3
+    networks:
+      - mynet
+	  
+networks:
+  mynet:
