@@ -19,6 +19,6 @@ services:
       - BROKER_ID=3
     networks:
       - mynet
-	  
+
 networks:
   mynet:
