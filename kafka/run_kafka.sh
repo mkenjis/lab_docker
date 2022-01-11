@@ -1,10 +1,21 @@
-export JAVA_HOME=/usr/local/jre1.8.0
+export JAVA_HOME=/usr/local/jre1.8.0_181
 export CLASSPATH=$JAVA_HOME/lib
 export PATH=$PATH:.:$JAVA_HOME/bin
 
-export KAFKA_HOME=/usr/local/kafka_2.11
+export KAFKA_HOME=/usr/local/kafka_2.11-2.1.1
 export PATH=$PATH:$KAFKA_HOME/bin
 
-nohup /usr/local/kafka_2.11/bin/zookeeper-server-start.sh /usr/local/kafka_2.11/config/zookeeper.properties &
+echo ${BROKER_ID} > /data/zookeeper/myid
 
-/usr/local/kafka_2.11/bin/kafka-server-start.sh /usr/local/kafka_2.11/config/server.properties > /usr/local/kafka_2.11/kafka.log 2>&1 &
+create_conf_files.sh
+
+#cat $KAFKA_HOME/config/server.properties.template | sed "s/localhost:2181/zkpr:2181/g" >$KAFKA_HOME/config/server.properties
+#echo "" >>$KAFKA_HOME/config/server.properties
+#echo "port=9092" >>$KAFKA_HOME/config/server.properties
+#echo "advertised.host.name = localhost" >>$KAFKA_HOME/config/server.properties
+
+zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties >/tmp/zookeeper.log &
+
+sleep 30
+
+kafka-server-start.sh $KAFKA_HOME/config/server.properties >/tmp/kafka.log
