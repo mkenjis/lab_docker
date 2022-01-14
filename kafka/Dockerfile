@@ -16,7 +16,7 @@ RUN mkdir -p /data/kafka \
 
 WORKDIR /root
 RUN echo "" >>.bashrc \
- && echo 'export JAVA_HOME=/usr/local/jre1.8.0' >>.bashrc \
+ && echo 'export JAVA_HOME=/usr/local/jre1.8.0_181' >>.bashrc \
  && echo 'export CLASSPATH=$JAVA_HOME/lib' >>.bashrc \
  && echo 'export PATH=$PATH:.:$JAVA_HOME/bin' >>.bashrc \
  && echo "" >>.bashrc \
