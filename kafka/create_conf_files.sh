@@ -1,7 +1,7 @@
 # server.properties
 # =================
 echo '# change this for each broker' >$KAFKA_HOME/config/server.properties
-echo 'broker.id='${BROKER_ID} >>$KAFKA_HOME/config/server.properties
+echo 'broker.id='${KFK_HOST} >>$KAFKA_HOME/config/server.properties
 echo '# change this to the hostname of each broker' >>$KAFKA_HOME/config/server.properties
 echo 'advertised.listeners=PLAINTEXT://'${HOSTNAME}':9092' >>$KAFKA_HOME/config/server.properties
 echo '# The ability to delete topics' >>$KAFKA_HOME/config/server.properties

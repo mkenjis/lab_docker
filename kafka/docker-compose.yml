@@ -5,18 +5,21 @@ services:
     image: mkenjis/ubkfk_img
     environment:
       - BROKER_ID=0
+      - KFK_HOST=kfk1
     networks:
       - mynet
   kfk2:
     image: mkenjis/ubkfk_img
     environment:
       - BROKER_ID=1
+      - KFK_HOST=kfk2
     networks:
       - mynet
   kfk3:
     image: mkenjis/ubkfk_img
     environment:
       - BROKER_ID=2
+      - KFK_HOST=kfk3
     networks:
       - mynet
 
