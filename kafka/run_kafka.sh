@@ -14,8 +14,8 @@ if [ -n "${BROKER_ID}" ]; then
 
    create_conf_files.sh
 
-   zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties 2>&1 >/root/zkp.log &
+  # $KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties >/root/zkp.log
 
-   kafka-server-start.sh $KAFKA_HOME/config/server.properties 2>&1 >/root/kfk.log &
+  # $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties >/root/kfk.log
    
 fi
