@@ -3,7 +3,7 @@ FROM ubuntu:18:04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Central
 
-RUN apt-get update && apt-get install -y supervisor vim
+RUN apt-get update && apt-get install -y supervisor vim iputils-ping
  
 WORKDIR /usr/local
 
