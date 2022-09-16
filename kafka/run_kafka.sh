@@ -14,14 +14,7 @@ if [ -n "${BROKER_ID}" ]; then
 
    create_conf_files.sh
 
-#cat $KAFKA_HOME/config/server.properties.template | sed "s/localhost:2181/zkpr:2181/g" >$KAFKA_HOME/config/server.properties
-#echo "" >>$KAFKA_HOME/config/server.properties
-#echo "port=9092" >>$KAFKA_HOME/config/server.properties
-#echo "advertised.host.name = localhost" >>$KAFKA_HOME/config/server.properties
-
    zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties 2>&1 >/root/zkp.log &
-
-   sleep 30
 
    kafka-server-start.sh $KAFKA_HOME/config/server.properties 2>&1 >/root/kfk.log &
    
