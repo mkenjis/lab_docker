@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:18:04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Central
@@ -29,7 +29,5 @@ RUN chmod +x create_conf_files.sh
 COPY run_kafka.sh .
 RUN chmod +x run_kafka.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-EXPOSE 9092
 
 CMD ["/usr/bin/supervisord"]
