@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Central
 
-RUN apt-get update && apt-get install -y supervisor vim iputils-ping
+RUN apt-get update && apt-get install -y supervisor vim iputils-ping dnsutils
  
 WORKDIR /usr/local
 
@@ -27,5 +27,7 @@ COPY run_kafka.sh .
 RUN chmod +x run_kafka.sh
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 9092
 
 CMD ["/usr/bin/supervisord"]
