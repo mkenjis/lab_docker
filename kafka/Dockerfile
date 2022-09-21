@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Central
 
-RUN apt-get update && apt-get install -y supervisor vim iputils-ping dnsutils
+RUN apt-get update && apt-get install -y supervisor openssh-server openssh-client vim iputils-ping dnsutils
  
 WORKDIR /usr/local
 
@@ -19,6 +19,9 @@ RUN echo "" >>.bashrc \
  && echo "" >>.bashrc \
  && echo 'export KAFKA_HOME=/usr/local/kafka_2.11-2.1.1' >>.bashrc \
  && echo 'export PATH=$PATH:$KAFKA_HOME/bin' >>.bashrc
+
+RUN /bin/bash -c "ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null" \
+ && cp .ssh/id_rsa.pub .ssh/authorized_keys
 
 COPY create_conf_files.sh .
 RUN chmod +x create_conf_files.sh
